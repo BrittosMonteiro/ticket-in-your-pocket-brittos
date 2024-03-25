@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px;
+}
+
+.logo {
+  animation: logo-spin infinite 20s linear;
+  height: 50px;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.input-default {
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white)
+}
+.input-default::placeholder{
+  font-weight: 500;
+}
+
+a{
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 600;
+}

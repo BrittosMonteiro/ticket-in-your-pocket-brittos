@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import { ShoppingCartSimple } from "phosphor-react";
 
 export default function HeaderComponent() {
   return (
@@ -11,6 +12,7 @@ export default function HeaderComponent() {
       <a href="#">Em alta</a>
       <a href="#">Meus ingressos</a>
       <a href="#">Minha conta</a>
+      <ShoppingCartSimple color="#fff" size={28} />
     </header>
   );
 }

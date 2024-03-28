@@ -1,0 +1,34 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
+    padding: 8px;
+    background-color: var(--black-02);
+    border-radius: 2px;
+    transition: .5s all;
+    color: var(--white);
+    gap: 8px;
+}
+
+.card_title{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.btn_add_to_card{
+    border: 1px solid var(--white);
+    width: 100%;
+    border-radius: 2px;
+    padding: 8px;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.card_btn_row, .card_selected{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+}

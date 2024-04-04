@@ -1,34 +1,37 @@
-.card{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 280px;
-    padding: 8px;
-    background-color: var(--black-02);
-    border-radius: 2px;
-    transition: .5s all;
-    color: var(--white);
-    gap: 8px;
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 296px;
+  border-radius: 2px;
+  transition: 0.5s all;
+  gap: 8px;
+  background-color: black;
 }
 
-.card_title{
-    font-size: 18px;
-    font-weight: 600;
+.card-description {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 8px 8px 8px;
+  gap: 16px;
 }
 
-.btn_add_to_card{
-    border: 1px solid var(--white);
-    width: 100%;
-    border-radius: 2px;
-    padding: 8px;
-    color: var(--white);
-    font-size: 16px;
-    font-weight: 600;
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--white);
 }
 
-.card_btn_row, .card_selected{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 4px;
+.btn-add-to-cart {
+  color: var(--white);
+  padding: 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.btn-add-to-cart:hover {
+  background-color: rgb(255, 145, 0);
 }

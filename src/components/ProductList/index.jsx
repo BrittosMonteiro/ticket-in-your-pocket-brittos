@@ -1,6 +1,5 @@
-import React from "react";
 import "./style.css";
-import CardComponent from "../Card/CardComponent";
+import CardComponent from "../Card";
 
 export default function ProductListComponent() {
   const product_list = [

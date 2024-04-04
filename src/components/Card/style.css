@@ -49,3 +49,25 @@
   justify-content: end;
   align-items: center;
 }
+
+.btn-remove-from-cart {
+  border: 2px solid rgb(255, 145, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+.btn-remove-from-cart:hover{
+  background-color: rgb(255, 145, 0);
+}
+
+.input-qty-ticket {
+  background-color: transparent;
+  width: 50px;
+  color: #f4f8fc;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+}

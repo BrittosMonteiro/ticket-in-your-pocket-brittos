@@ -4,12 +4,10 @@ import ProductListComponent from "../../components/ProductList";
 
 export default function HomeView() {
   return (
-    <>
-      <ContainerComponent title={"Em cartaz"}>
-        <ItemListContainerComponent>
-          <ProductListComponent />
-        </ItemListContainerComponent>
-      </ContainerComponent>
-    </>
+    <ContainerComponent title={"Em cartaz"}>
+      <ItemListContainerComponent>
+        <ProductListComponent />
+      </ItemListContainerComponent>
+    </ContainerComponent>
   );
 }

@@ -1,0 +1,6 @@
+.movie_description {
+  color: var(--white);
+  padding: 16px;
+  backdrop-filter: blur(100px);
+  border-radius: 4px;
+}

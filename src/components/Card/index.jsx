@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 import { Ticket, Minus } from "phosphor-react";
+import { Link } from "react-router-dom";
 
 export default function CardComponent({ movie }) {
   const [qty, setQty] = useState(0);
@@ -28,7 +29,9 @@ export default function CardComponent({ movie }) {
         className="card-img"
       />
       <div className="card-description">
-        <span className="card-title">{movie.title}</span>
+        <Link to={`/movie/${movie.id}`}>
+          <span className="card-title">{movie.title}</span>
+        </Link>
         <button
           className="btn-default btn-add-to-cart"
           onClick={() => addTicket()}

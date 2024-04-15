@@ -6,6 +6,7 @@ import CartView from "./views/Cart/index.jsx";
 import App from "./App.jsx";
 import HomeView from "./views/Home/index.jsx";
 import ProductDetails from "./views/ProductDetails/index.jsx";
+import { CartProvider } from "./context/CartContext.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "movie/:id",
-        element: <ProductDetails />
+        element: <ProductDetails />,
       },
       {
         path: "cart",
@@ -30,6 +31,8 @@ const routes = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={routes} />
+    <CartProvider>
+      <RouterProvider router={routes} />
+    </CartProvider>
   </React.StrictMode>
 );

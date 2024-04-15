@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./style.css";
 import { Ticket, Minus } from "phosphor-react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 export default function CardComponent({ movie }) {
+  const {addToCart} = useContext(CartContext)
   const [qty, setQty] = useState(0);
 
   const addTicket = () => {
     setQty(qty + 1);
+    addToCart(movie.id, qty + 1)
   };
 
   const removeTicket = () => {

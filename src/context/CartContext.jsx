@@ -2,11 +2,12 @@ import { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   const loadCart = () => {
-    const getLocalCart = JSON.parse(localStorage.getItem("cart"));
+    const getLocalCart = JSON.parse(localStorage.getItem("cart")) || [];
     if (getLocalCart.length > 0) {
       setCart(getLocalCart);
     }
@@ -16,13 +17,13 @@ export const CartProvider = ({ children }) => {
     loadCart();
   }, []);
 
-  const addToCart = (id, quantity) => {
-    const isInCart = findItemInCart(id);
+  const addToCart = (movie, quantity) => {
+    const isInCart = findItemInCart(movie.id);
 
     if (isInCart) {
-      increaseQtyById(id);
+      increaseQtyById(movie.id);
     } else {
-      updateCart([...cart, { id, quantity }]);
+      updateCart([...cart, { ...movie, quantity }]);
     }
   };
 
@@ -50,16 +51,18 @@ export const CartProvider = ({ children }) => {
 
   const decreaseQtyById = (id) => {
     const updatedCartQuantity = cart.map((item) => {
-      if(item.id === id) {
-        return {...item, quantity: item.quantity - 1}
+      if (item.id === id) {
+        return { ...item, quantity: item.quantity - 1 };
       }
-      return item
-    })
-    updateCart(updatedCartQuantity)
-  }
+      return item;
+    });
+    updateCart(updatedCartQuantity);
+  };
 
   const getCartQty = () => {
-    return cart.reduce((acc, cur) => acc + cur.quantity, 0);
+    const quantity =
+      cart.length > 0 ? cart.reduce((acc, cur) => acc + cur.quantity, 0) : 0;
+    return quantity;
   };
 
   const updateCart = (newCart) => {

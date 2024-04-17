@@ -1,21 +1,24 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./style.css";
 import { Ticket, Minus } from "phosphor-react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
+// eslint-disable-next-line react/prop-types
 export default function CardComponent({ movie }) {
-  const { addToCart, findItemInCart, removeFromCart, decreaseQtyById } = useContext(CartContext);
+  const { addToCart, findItemInCart, decreaseQtyById, removeFromCart } =
+    useContext(CartContext);
   const [qty, setQty] = useState(0);
 
   const addTicket = () => {
     setQty(qty + 1);
-    addToCart(movie.id, qty + 1);
+    addToCart(movie, qty + 1);
   };
 
   const removeTicket = () => {
-    setQty(qty - 1);
-    decreaseQtyById(movie.id)
+    const quantity = qty - 1;
+    setQty(quantity);
+    quantity > 0 ? decreaseQtyById(movie.id) : removeFromCart(movie.id);
   };
 
   const changeQty = (newQty) => {
@@ -29,7 +32,7 @@ export default function CardComponent({ movie }) {
   const isMovieInCart = () => {
     const movieData = findItemInCart(movie.id);
     if (movieData) {
-      setQty(movieData.quantity)
+      setQty(movieData.quantity);
     }
   };
 

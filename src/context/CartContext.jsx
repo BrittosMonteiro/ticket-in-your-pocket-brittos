@@ -2,55 +2,78 @@ import { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  // useEffect(() => {
-  //   const cartStore = getCartStore();
-  //   if (cartStore) setCart(cartStore);
-  // }, []);
+  const loadCart = () => {
+    const getLocalCart = JSON.parse(localStorage.getItem("cart")) || [];
+    if (getLocalCart.length > 0) {
+      setCart(getLocalCart);
+    }
+  };
 
-  const addToCart = (id, quantity) => {
-    // const isInCart = findItemInCart(product.id, cart);
-    // if (isInCart) {
-    //   increaseQtyById(product.id, quantity);
-    // } else {
-    //   setCartStore([...cart, { product, quantity }]);
-    //   updateCart([...cart, { product, quantity }]);
-    // }
+  useEffect(() => {
+    loadCart();
+  }, []);
+
+  const addToCart = (movie, quantity) => {
+    const isInCart = findItemInCart(movie.id);
+
+    if (isInCart) {
+      increaseQtyById(movie.id);
+    } else {
+      updateCart([...cart, { ...movie, quantity }]);
+    }
   };
 
   const removeFromCart = (id) => {
-    // const isInCart = findItemInCart(id, cart);
-    // if (isInCart) {
-    //   const updatedCart = cart.filter((e) => e.product.id !== id);
-    //   setCartStore(updatedCart);
-    //   updateCart(updatedCart);
-    // }
+    const isInCart = findItemInCart(id);
+    if (isInCart) {
+      const updatedCart = cart.filter((e) => e.id !== id);
+      updateCart(updatedCart);
+    }
   };
 
   const clearCart = () => {
-    // removeStore();
-    // updateCart([]);
+    updateCart([]);
   };
 
-  const increaseQtyById = (id, quantity) => {
-    // const updatedCartQuantity = cart.map((item) => {
-    //   if (item.product.id === id) {
-    //     return { ...item, quantity: item.quantity + quantity };
-    //   }
-    //   return item;
-    // });
-    // setCartStore(updatedCartQuantity);
-    // updateCart(updatedCartQuantity);
+  const increaseQtyById = (id) => {
+    const updatedCartQuantity = cart.map((item) => {
+      if (item.id === id) {
+        return { ...item, quantity: item.quantity + 1 };
+      }
+      return item;
+    });
+    updateCart(updatedCartQuantity);
+  };
+
+  const decreaseQtyById = (id) => {
+    const updatedCartQuantity = cart.map((item) => {
+      if (item.id === id) {
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      return item;
+    });
+    updateCart(updatedCartQuantity);
   };
 
   const getCartQty = () => {
-    return cart.reduce((acc, cur) => acc + cur.quantity, 0);
+    const quantity =
+      cart.length > 0 ? cart.reduce((acc, cur) => acc + cur.quantity, 0) : 0;
+    return quantity;
   };
 
   const updateCart = (newCart) => {
-    // setCart(newCart);
+    setCart(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+  };
+
+  const findItemInCart = (id) => {
+    const pos = cart.findIndex((e) => e.id == id);
+    const data = pos >= 0 ? cart[pos] : false;
+    return data;
   };
 
   return (
@@ -59,8 +82,10 @@ export const CartProvider = ({ children }) => {
         addToCart,
         removeFromCart,
         increaseQtyById,
+        decreaseQtyById,
         clearCart,
         getCartQty,
+        findItemInCart,
         cart,
       }}
     >

@@ -31,3 +31,15 @@ a {
   font-size: 16px;
   font-weight: 600;
 }
+
+.cart-link {
+  margin-left: 56px; /* Ajuste conforme necessário */
+}
+
+.menu-right {
+  margin-top: 95px;
+  margin-left: auto; /* Isso empurra o menu para a direita */
+  margin-bottom: 80px;
+  display: flex;
+  align-items: center;
+}

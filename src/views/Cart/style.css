@@ -1,0 +1,34 @@
+.paybill {
+  display: flex;
+  flex-direction: row;
+  padding: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 4px;
+  backdrop-filter: blur(100px);
+  gap: 16px;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.cart_total {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 10%;
+}
+
+.btn_purchase {
+  background-color: #ffa500;
+  font-size: 16px;
+  color: #f2f4fc;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}

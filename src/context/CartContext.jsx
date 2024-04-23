@@ -65,6 +65,11 @@ export const CartProvider = ({ children }) => {
     return quantity;
   };
 
+  const getCartTotal = () => {
+    const totalItems = getCartQty();
+    return totalItems * 27.45;
+  };
+
   const updateCart = (newCart) => {
     setCart(newCart);
     localStorage.setItem("cart", JSON.stringify(newCart));
@@ -85,6 +90,7 @@ export const CartProvider = ({ children }) => {
         decreaseQtyById,
         clearCart,
         getCartQty,
+        getCartTotal,
         findItemInCart,
         cart,
       }}

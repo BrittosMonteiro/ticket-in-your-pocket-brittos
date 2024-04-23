@@ -33,13 +33,20 @@ a {
 }
 
 .cart-link {
-  margin-left: 56px; /* Ajuste conforme necessário */
+  margin-left: 120px;  /*Ajuste conforme necessário */
+}
+
+.logo{
+  margin-top: 15px;
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
 }
 
 .menu-right {
-  margin-top: 95px;
-  margin-left: auto; /* Isso empurra o menu para a direita */
-  margin-bottom: 80px;
+  margin-top: 15px;
+  margin-left: auto;  /*Isso empurra o menu para a direita */
+  margin-bottom: 0px;
   display: flex;
   align-items: center;
 }

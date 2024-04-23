@@ -7,6 +7,8 @@ import App from "./App.jsx";
 import HomeView from "./views/Home/index.jsx";
 import ProductDetails from "./views/ProductDetails/index.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
+import LoginForm from "./components/LoginForm/index.jsx";
+import SignupForm from "./components/SignupForm/index.jsx";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -43,6 +45,14 @@ const routes = createBrowserRouter([
       {
         path: "cart",
         element: <CartView />,
+      },
+      {
+        path: "login",
+        element: <LoginForm />,
+      },
+      {
+        path: "signup",
+        element: <SignupForm />,
       },
     ],
   },

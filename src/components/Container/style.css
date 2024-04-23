@@ -12,3 +12,10 @@
   color: var(--white);
   font-size: 28px;
 }
+
+@media screen and (max-width: 768px) {
+  .container_title {
+    margin-left: 24px; 
+  }
+}
+

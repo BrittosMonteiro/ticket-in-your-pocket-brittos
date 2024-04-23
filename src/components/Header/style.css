@@ -31,3 +31,22 @@ a {
   font-size: 16px;
   font-weight: 600;
 }
+
+.cart-link {
+  margin-left: 120px;  /*Ajuste conforme necessário */
+}
+
+.logo{
+  margin-top: 15px;
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.menu-right {
+  margin-top: 15px;
+  margin-left: auto;  /*Isso empurra o menu para a direita */
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
+}

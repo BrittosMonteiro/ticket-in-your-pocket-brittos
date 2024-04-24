@@ -52,7 +52,7 @@ export default function CartView() {
           <span className="cart_item__description">
             R$ {getCartTotal().toFixed(2)}
           </span>
-          <button className="btn_purchase" onClick={() => purchase()}>
+          <button className="btn btn-warning btn-sm" onClick={() => purchase()}>
             Finalizar
           </button>
         </div>

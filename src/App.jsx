@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <main className="App">
+    <main className="flex flex-col items-center">
       <HeaderComponent />
       <Outlet />
     </main>

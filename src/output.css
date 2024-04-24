@@ -1657,6 +1657,10 @@ html {
   font-size: 0.875rem;
 }
 
+.btn-wide {
+  width: 16rem;
+}
+
 .btn-square:where(.btn-sm) {
   height: 2rem;
   width: 2rem;
@@ -1729,16 +1733,36 @@ html {
   z-index: 10;
 }
 
+.m-0 {
+  margin: 0px;
+}
+
 .flex {
   display: flex;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .w-full {
   width: 100%;
 }
 
+.max-w-screen-xl {
+  max-width: 1280px;
+}
+
 .flex-row {
   flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.content-center {
+  align-content: center;
 }
 
 .items-center {
@@ -1751,6 +1775,14 @@ html {
 
 .gap-2 {
   gap: 0.5rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-8 {
+  gap: 2rem;
 }
 
 .border-b-2 {
@@ -1774,6 +1806,11 @@ html {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .text-lg {
@@ -1826,4 +1863,26 @@ body {
 .btn-default {
   background-color: transparent;
   cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .sm\:bg-orange-500 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(249 115 22 / var(--tw-bg-opacity));
+  }
+
+  .sm\:p-4 {
+    padding: 1rem;
+  }
+
+  .sm\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:p-4 {
+    padding: 1rem;
+  }
 }

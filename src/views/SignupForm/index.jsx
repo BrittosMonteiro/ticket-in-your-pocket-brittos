@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./style.css";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { UserContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 function SignupForm() {
+  const { getSession, setSession } = useContext(UserContext);
+  const userData = getSession();
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  if (userData) {
+    navigate("/");
+    return;
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,11 +32,12 @@ function SignupForm() {
 
       addDoc(usersCollection, userData)
         .then((doc) => {
-          console.log(doc.id);
+          setSession({ id: doc.id, name, email });
           setName("");
           setLastName("");
           setEmail("");
           setPassword("");
+          navigate("/");
         })
         .catch((err) => console.log(err));
     } catch (e) {

@@ -45,11 +45,15 @@ export default function CardComponent({ movie }) {
       <img
         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
         className="card-img"
+        onClick={() => document.getElementById(movie.id).showModal()}
       />
       <div className="card-description">
-        <Link to={`/movie/${movie.id}`}>
-          <span className="card-title">{movie.title}</span>
-        </Link>
+        <span
+          className="card-title"
+          onClick={() => document.getElementById(movie.id).showModal()}
+        >
+          {movie.title}
+        </span>
         <button
           className="btn-default btn-add-to-cart"
           onClick={() => addTicket()}
@@ -74,6 +78,18 @@ export default function CardComponent({ movie }) {
           <Ticket size={18} color="#f4f8fc" />
         </div>
       </div>
+
+      <dialog id={movie.id} className="modal">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">{movie.title}</h3>
+          <p className="py-4">{movie.overview}</p>
+          <div className="modal-action">
+            <form method="dialog">
+              <button className="btn">Fechar</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 }

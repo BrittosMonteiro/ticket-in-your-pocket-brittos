@@ -8,17 +8,19 @@ import {
   where,
 } from "firebase/firestore";
 import { UserContext } from "../../context/UserContext";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function LoginForm() {
   const { userSession, setSession } = useContext(UserContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const { search } = useLocation();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   if (userSession) {
-    navigate('/')
-    return
+    navigate("/");
+    return;
   }
 
   const handleSubmit = async (event) => {
@@ -40,6 +42,12 @@ function LoginForm() {
             email: doc.data().email,
           };
           setSession(userData);
+          if (search) {
+            const return_to = search.split("=")[1];
+            navigate(return_to);
+          } else {
+            navigate("/");
+          }
           setEmail("");
           setPassword("");
         }

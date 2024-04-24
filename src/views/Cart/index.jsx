@@ -5,33 +5,39 @@ import ItemListContainerComponent from "../../components/ItemListContainer";
 import "./style.css";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import CartItemComponent from "../../components/CartItem";
+import { UserContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function CartView() {
+  const { userSession } = useContext(UserContext);
   const { cart, getCartTotal } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const db = getFirestore();
   const paymentHistoryCollection = collection(db, "paymentHistory");
 
   const purchase = async () => {
-    const purchaseData = {
-      idUser: "v4z51S6Kt7n85jXLjYFk",
-      items: [],
-      created_at: Date.now(),
-      total: getCartTotal()
-    };
-    for (let item of cart) {
-      const data = {
-        backdrop_path: item.backdrop_path,
-        id: item.id,
-        poster_path: item.poster_path,
-        title: item.title,
+    if (userSession) {
+      const purchaseData = {
+        idUser: userSession.id,
+        items: [],
+        created_at: Date.now(),
+        total: getCartTotal(),
       };
-      purchaseData.items.push(data);
-    }
+      for (let item of cart) {
+        const data = {
+          backdrop_path: item.backdrop_path,
+          id: item.id,
+          poster_path: item.poster_path,
+          title: item.title,
+        };
+        purchaseData.items.push(data);
+      }
 
-    const req = await addDoc(paymentHistoryCollection, { purchaseData });
-    const res = await req.json();
-    console.log(res);
+      addDoc(paymentHistoryCollection, { purchaseData });
+    } else {
+      navigate("/login?return_to=/cart");
+    }
   };
   return (
     <ContainerComponent title={"Carrinho"}>

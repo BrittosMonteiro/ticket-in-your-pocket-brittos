@@ -19,13 +19,17 @@ export const UserProvider = ({ children }) => {
     setUserSession(data);
   };
 
+  const getSession = () => {
+    return userSession;
+  };
+
   const removeSession = () => {
     localStorage.removeItem("localSession");
-    setUserSession({});
+    setUserSession();
   };
 
   return (
-    <UserContext.Provider value={{ setSession, removeSession, userSession }}>
+    <UserContext.Provider value={{ setSession, getSession, removeSession }}>
       {children}
     </UserContext.Provider>
   );

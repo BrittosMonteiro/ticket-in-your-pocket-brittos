@@ -8,7 +8,7 @@ import Button from "../Button";
 import { UserContext } from "../../context/UserContext";
 
 export default function HeaderComponent() {
-  const { userSession } = useContext(UserContext);
+  const { userSession, removeSession } = useContext(UserContext);
   const { getCartQty } = useContext(CartContext);
 
   return (
@@ -27,7 +27,11 @@ export default function HeaderComponent() {
             </Link>
           </>
         ) : (
-          <span>{userSession.name}</span>
+          <>
+            <span>{userSession.name}</span>
+            <Link to="/history">Histórico de compras</Link>
+            <button onClick={() => removeSession()}>Sair</button>
+          </>
         )}
 
         <Link to="/cart" className="cart-link">

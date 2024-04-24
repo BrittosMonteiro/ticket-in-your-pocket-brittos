@@ -5,6 +5,7 @@ import ProductDetails from "../views/ProductDetails";
 import CartView from "../views/Cart";
 import LoginForm from "../views/LoginForm";
 import SignupForm from "../views/SignupForm";
+import PurchaseHistoryView from "../views/PurchaseHistory";
 
 export const routes = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const routes = createBrowserRouter([
       {
         path: "signup",
         element: <SignupForm />,
+      },
+      {
+        path: "history",
+        element: <PurchaseHistoryView />,
       },
     ],
   },

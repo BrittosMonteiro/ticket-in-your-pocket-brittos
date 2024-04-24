@@ -8,7 +8,8 @@ import Button from "../Button";
 import { UserContext } from "../../context/UserContext";
 
 export default function HeaderComponent() {
-  const { userSession, removeSession } = useContext(UserContext);
+  const { getSession, removeSession } = useContext(UserContext);
+  const userData = getSession()
   const { getCartQty } = useContext(CartContext);
 
   return (
@@ -17,7 +18,7 @@ export default function HeaderComponent() {
         <img src={logo} alt="TicketInYourPocket" className="logo" />
       </Link>
       <div className="menu-right">
-        {!userSession ? (
+        {!userData ? (
           <>
             <Link to="/login">
               <Button>Login</Button>
@@ -28,7 +29,7 @@ export default function HeaderComponent() {
           </>
         ) : (
           <>
-            <span>{userSession.name}</span>
+            <span>{userData.name}</span>
             <Link to="/history">Histórico de compras</Link>
             <button onClick={() => removeSession()}>Sair</button>
           </>

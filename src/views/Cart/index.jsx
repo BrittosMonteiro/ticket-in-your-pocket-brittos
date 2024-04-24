@@ -9,7 +9,8 @@ import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 
 export default function CartView() {
-  const { userSession } = useContext(UserContext);
+  const { getSession } = useContext(UserContext);
+  const userData = getSession();
   const { cart, getCartTotal } = useContext(CartContext);
   const navigate = useNavigate();
 
@@ -17,9 +18,9 @@ export default function CartView() {
   const paymentHistoryCollection = collection(db, "paymentHistory");
 
   const purchase = async () => {
-    if (userSession) {
+    if (userData) {
       const purchaseData = {
-        idUser: userSession.id,
+        idUser: userData.id,
         items: [],
         created_at: Date.now(),
         total: getCartTotal(),

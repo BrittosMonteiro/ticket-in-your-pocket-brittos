@@ -51,7 +51,6 @@ input:focus {
   height: 40px; /* Ajustando a altura do botão */
   width: 150px; /* Ajustando a largura do botão */
   border-radius: 20px;
-  margin: 20px;
   border: none;
   transition: transform 0.2s ease; /* Adicionando uma transição suave */
 }

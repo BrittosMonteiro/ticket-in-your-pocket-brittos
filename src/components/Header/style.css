@@ -9,6 +9,7 @@
   top: 0;
   background-color: var(--black);
   border-bottom: 1px solid rgb(255, 145, 0);
+  z-index: 1;
 }
 
 .title {

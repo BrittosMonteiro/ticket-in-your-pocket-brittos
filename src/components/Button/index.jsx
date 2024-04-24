@@ -1,9 +1,8 @@
-import React from 'react';
 import './index.css';
 
 function Button({ children, onClick }) {
   return (
-    <button className='button' onClick={onClick}>
+    <button className='btn btn-sm btn-warning' onClick={onClick}>
       {children}
     </button>
   );

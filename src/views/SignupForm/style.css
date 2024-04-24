@@ -1,0 +1,61 @@
+/* SignupForm.css */
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5rem 4%;
+    margin-top: 50px;
+  }
+  .form-wrapper {
+    background-color:#fafafa90; 
+    border: 2px solid #ccc; 
+    padding: 20px; 
+    border-radius: 10px; 
+    width: 400px; 
+    height: 600px; 
+    box-shadow: #ccc;
+  }
+  
+  h2{
+    padding-top: 10px;
+  }
+  .form-group {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 0.9rem;
+  }
+  
+  .input-field {
+    background-color: #0e0e0e;
+    color: #fff;
+    border-radius: 20px;
+    padding: 10px; /* Aumentando o espaçamento interno do input */
+    border: 1px solid #0e0e0e ;
+    transition: border-color 0.3s ease; /* Adicionando uma transição suave para a mudança de cor da borda */
+  }
+  
+  /* Alterar a cor da borda quando o campo é clicado */
+  input:focus {
+    border-color: #ff9100; /* Cor da borda quando o campo é clicado */
+  }
+  
+  .button {
+    background-color: #0e0e0e;
+    color: #fff;
+    height: 40px; /* Ajustando a altura do botão */
+    width: 150px; /* Ajustando a largura do botão */
+    border-radius: 20px;
+    margin: 20px;
+    border: none;
+    transition: transform 0.2s ease; /* Adicionando uma transição suave */
+  }
+  
+  .button:hover {
+    transform: scale(1.05); /* Aumentando o tamanho do botão em 5% */
+  }

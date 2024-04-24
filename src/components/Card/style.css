@@ -11,6 +11,11 @@
   overflow: hidden;
 }
 
+.card:hover {
+  transform: scale(1.1); /* Aumenta o tamanho em 10% */
+  transition: transform 0.5s; /* Adiciona uma transição suave */
+}
+
 .card-description {
   display: flex;
   flex-direction: column;
@@ -71,3 +76,7 @@
   font-size: 18px;
   font-weight: 600;
 }
+
+
+
+

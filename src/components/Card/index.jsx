@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import "./style.css";
 import { Ticket, Minus } from "phosphor-react";
-import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import ModalItemDetailComponent from "../ModalItem";
 
 // eslint-disable-next-line react/prop-types
 export default function CardComponent({ movie }) {
@@ -78,18 +78,7 @@ export default function CardComponent({ movie }) {
           <Ticket size={18} color="#f4f8fc" />
         </div>
       </div>
-
-      <dialog id={movie.id} className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">{movie.title}</h3>
-          <p className="py-4">{movie.overview}</p>
-          <div className="modal-action">
-            <form method="dialog">
-              <button className="btn">Fechar</button>
-            </form>
-          </div>
-        </div>
-      </dialog>
+      <ModalItemDetailComponent item={movie} />
     </div>
   );
 }

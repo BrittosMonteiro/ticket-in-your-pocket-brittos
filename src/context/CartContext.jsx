@@ -1,9 +1,19 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { UserContext } from "./UserContext";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 export const CartContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const CartProvider = ({ children }) => {
+  const { getSession } = useContext(UserContext);
+  const userData = getSession();
+
+  const db = getFirestore();
+  const purchaseHistoryCollection = collection(db, "purchaseHistory");
+
+  // const navigate = useNavigate();
+
   const [cart, setCart] = useState([]);
 
   const loadCart = () => {
@@ -23,7 +33,8 @@ export const CartProvider = ({ children }) => {
     if (isInCart) {
       increaseQtyById(movie.id);
     } else {
-      updateCart([...cart, { ...movie, quantity }]);
+      const subtotal = calcSubtotal(quantity);
+      updateCart([...cart, { ...movie, quantity, subtotal }]);
     }
   };
 
@@ -42,7 +53,8 @@ export const CartProvider = ({ children }) => {
   const increaseQtyById = (id) => {
     const updatedCartQuantity = cart.map((item) => {
       if (item.id === id) {
-        return { ...item, quantity: item.quantity + 1 };
+        const subtotal = calcSubtotal(item.quantity + 1);
+        return { ...item, quantity: item.quantity + 1, subtotal };
       }
       return item;
     });
@@ -52,7 +64,8 @@ export const CartProvider = ({ children }) => {
   const decreaseQtyById = (id) => {
     const updatedCartQuantity = cart.map((item) => {
       if (item.id === id) {
-        return { ...item, quantity: item.quantity - 1 };
+        const subtotal = calcSubtotal(item.quantity - 1);
+        return { ...item, quantity: item.quantity - 1, subtotal };
       }
       return item;
     });
@@ -62,12 +75,14 @@ export const CartProvider = ({ children }) => {
   const getCartQty = () => {
     const quantity =
       cart.length > 0 ? cart.reduce((acc, cur) => acc + cur.quantity, 0) : 0;
-    return quantity;
+
+    const total = calcSubtotal(quantity).toFixed(2).replace(".", ",");
+    return { quantity, total };
   };
 
   const getCartTotal = () => {
     const totalItems = getCartQty();
-    return totalItems * 27.45;
+    return (totalItems * 27.45).toFixed(2).replace(".", ",");
   };
 
   const updateCart = (newCart) => {
@@ -75,10 +90,47 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify(newCart));
   };
 
+  const calcSubtotal = (quantity) => {
+    return quantity * 27.9;
+  };
+
   const findItemInCart = (id) => {
     const pos = cart.findIndex((e) => e.id == id);
     const data = pos >= 0 ? cart[pos] : false;
     return data;
+  };
+
+  const purchase = () => {
+    try {
+      if (!userData) {
+        throw new Error();
+      }
+
+      const purchaseData = {
+        idUser: userData.id,
+        items: [],
+        created_at: Date.now(),
+        total: getCartTotal(),
+      };
+
+      for (let item of cart) {
+        const data = {
+          backdrop_path: item.backdrop_path,
+          id: item.id,
+          poster_path: item.poster_path,
+          title: item.title,
+        };
+
+        purchaseData.items.push(data);
+      }
+
+      const finish = addDoc(purchaseHistoryCollection, { purchaseData });
+      if (finish) {
+        clearCart();
+      }
+    } catch (err) {
+      return err;
+    }
   };
 
   return (
@@ -92,6 +144,7 @@ export const CartProvider = ({ children }) => {
         getCartQty,
         getCartTotal,
         findItemInCart,
+        purchase,
         cart,
       }}
     >

@@ -1,9 +1,0 @@
-.cart_item {
-  display: flex;
-  justify-content: space-between;
-}
-
-.cart_item__description {
-  font-size: 18px;
-  font-weight: 500;
-}

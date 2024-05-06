@@ -3,7 +3,6 @@ import "./style.css";
 import { ShoppingCartSimple } from "phosphor-react";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
-import logo from "../../../src/assets/TicketInYourPocketLogo.svg";
 import Button from "../Button";
 import { UserContext } from "../../context/UserContext";
 
@@ -13,7 +12,7 @@ export default function HeaderComponent() {
   const { getCartQty } = useContext(CartContext);
 
   return (
-    <header className="w-full flex flex-row items-center justify-between border-b-2 border-orange-500 p-4 sticky top-0 z-10 bg-[#212121]">
+    <header className="w-full flex flex-row items-center justify-between border-b-2 border-orange-500 p-4 sticky top-0 z-10 bg-base">
       <Link to="/">
         <svg
           id="logo-70"
@@ -49,11 +48,7 @@ export default function HeaderComponent() {
         ) : (
           <>
             <span className="">{userData.name}</span>
-            <Link
-              to="/history"
-              role="button"
-              className="btn btn-sm btn-outline"
-            >
+            <Link to="/history" role="button" className="btn btn-sm">
               Histórico de compras
             </Link>
             <button className="btn btn-sm" onClick={() => removeSession()}>
@@ -68,7 +63,7 @@ export default function HeaderComponent() {
           className="btn btn-sm flex flex-row items-center"
         >
           <ShoppingCartSimple color="#fff" size={28} />
-          <span>{getCartQty()}</span>
+          {getCartQty().quantity > 0 && <span>{getCartQty().quantity}</span>}
         </Link>
       </div>
     </header>

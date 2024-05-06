@@ -5,15 +5,14 @@ import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 
 function SignupForm() {
-  const { getSession, setSession } = useContext(UserContext);
-  const userData = getSession();
+  const { userSession, setSession } = useContext(UserContext);
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  if (userData) {
+  if (userSession) {
     navigate("/");
     return;
   }
@@ -23,14 +22,14 @@ function SignupForm() {
     try {
       const db = getFirestore();
       const usersCollection = collection(db, "users");
-      const userData = {
+      const userSession = {
         name,
         lastname,
         email,
         password,
       };
 
-      addDoc(usersCollection, userData)
+      addDoc(usersCollection, userSession)
         .then((doc) => {
           setSession({ id: doc.id, name, email });
           setName("");

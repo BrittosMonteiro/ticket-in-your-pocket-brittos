@@ -11,15 +11,14 @@ import { UserContext } from "../../context/UserContext";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function LoginForm() {
-  const { getSession, setSession } = useContext(UserContext);
-  const userData = getSession();
+  const { userSession, setSession } = useContext(UserContext);
   const navigate = useNavigate();
   const { search } = useLocation();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  if (userData) {
+  if (userSession) {
     navigate("/");
     return;
   }
@@ -37,12 +36,12 @@ function LoginForm() {
       const querySnapshot = await getDocs(findUser);
       querySnapshot.forEach((doc) => {
         if (doc.exists()) {
-          const userData = {
+          const userSession = {
             id: doc.id,
             name: doc.data().name,
             email: doc.data().email,
           };
-          setSession(userData);
+          setSession(userSession);
           if (search) {
             const return_to = search.split("=")[1];
             navigate(return_to);

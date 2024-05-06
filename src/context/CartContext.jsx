@@ -1,18 +1,22 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { UserContext } from "./UserContext";
-import { addDoc, collection, getFirestore } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
 
 export const CartContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const CartProvider = ({ children }) => {
-  const { getSession } = useContext(UserContext);
-  const userData = getSession();
+  const { userSession } = useContext(UserContext);
 
   const db = getFirestore();
   const purchaseHistoryCollection = collection(db, "purchaseHistory");
-
-  // const navigate = useNavigate();
 
   const [cart, setCart] = useState([]);
 
@@ -80,11 +84,6 @@ export const CartProvider = ({ children }) => {
     return { quantity, total };
   };
 
-  const getCartTotal = () => {
-    const totalItems = getCartQty();
-    return (totalItems * 27.45).toFixed(2).replace(".", ",");
-  };
-
   const updateCart = (newCart) => {
     setCart(newCart);
     localStorage.setItem("cart", JSON.stringify(newCart));
@@ -102,15 +101,15 @@ export const CartProvider = ({ children }) => {
 
   const purchase = () => {
     try {
-      if (!userData) {
+      if (!userSession) {
         throw new Error();
       }
 
       const purchaseData = {
-        idUser: userData.id,
+        idUser: userSession.id,
         items: [],
         created_at: Date.now(),
-        total: getCartTotal(),
+        total: getCartQty().total,
       };
 
       for (let item of cart) {
@@ -124,13 +123,31 @@ export const CartProvider = ({ children }) => {
         purchaseData.items.push(data);
       }
 
-      const finish = addDoc(purchaseHistoryCollection, { purchaseData });
+      const finish = addDoc(purchaseHistoryCollection, purchaseData);
       if (finish) {
         clearCart();
       }
     } catch (err) {
       return err;
     }
+  };
+
+  const getPurchaseHistory = async () => {
+    const db = getFirestore();
+
+    const getHistory = query(
+      collection(db, "purchaseHistory"),
+      where("idUser", "==", "Eubfw09SFMqzH8cXAPbW")
+    );
+
+    const docs = await getDocs(getHistory);
+
+    console.log(docs.size);
+    docs.forEach((doc) => {
+      if (doc.exists()) {
+        console.log(doc);
+      }
+    });
   };
 
   return (
@@ -142,9 +159,9 @@ export const CartProvider = ({ children }) => {
         decreaseQtyById,
         clearCart,
         getCartQty,
-        getCartTotal,
         findItemInCart,
         purchase,
+        getPurchaseHistory,
         cart,
       }}
     >

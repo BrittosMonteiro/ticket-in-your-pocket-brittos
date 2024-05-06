@@ -7,12 +7,11 @@ import Button from "../Button";
 import { UserContext } from "../../context/UserContext";
 
 export default function HeaderComponent() {
-  const { getSession, removeSession } = useContext(UserContext);
-  const userData = getSession();
+  const { userSession, removeSession } = useContext(UserContext);
   const { getCartQty } = useContext(CartContext);
 
   return (
-    <header className="w-full flex flex-row items-center justify-between border-b-2 border-orange-500 p-4 sticky top-0 z-10 bg-base">
+    <header className="w-full flex flex-row items-center justify-between border-b-2 border-orange-500 p-4 sticky top-0 z-10 bg-neutral">
       <Link to="/">
         <svg
           id="logo-70"
@@ -36,7 +35,7 @@ export default function HeaderComponent() {
         </svg>
       </Link>
       <div className="flex flex-row items-center gap-2">
-        {!userData ? (
+        {!userSession ? (
           <div className="flex flex-row gap-2">
             <Link to="/login">
               <Button>Entrar</Button>
@@ -47,7 +46,7 @@ export default function HeaderComponent() {
           </div>
         ) : (
           <>
-            <span className="">{userData.name}</span>
+            <span className="">{userSession.name}</span>
             <Link to="/history" role="button" className="btn btn-sm">
               Histórico de compras
             </Link>

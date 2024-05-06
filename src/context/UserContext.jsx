@@ -1,3 +1,10 @@
+import {
+  collection,
+  getDocs,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
 import { createContext, useEffect, useState } from "react";
 
 export const UserContext = createContext();
@@ -6,12 +13,19 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [userSession, setUserSession] = useState();
 
-  useEffect(() => {
-    const localSession =
-      JSON.parse(localStorage.getItem("localSession")) || null;
-    if (localSession) {
-      setSession(localSession);
+  const db = getFirestore();
+  const purchaseHistoryCollection = collection(db, "purchaseHistory");
+
+  const loadLocalSession = () => {
+    const getLocalSession = JSON.parse(localStorage.getItem("localSession"));
+    if (getLocalSession) {
+      setUserSession(getLocalSession);
     }
+  };
+
+  useEffect(() => {
+    const getLocalSession = loadLocalSession();
+    getLocalSession;
   }, []);
 
   const setSession = (data) => {
@@ -19,17 +33,36 @@ export const UserProvider = ({ children }) => {
     setUserSession(data);
   };
 
-  const getSession = () => {
-    return userSession;
-  };
-
   const removeSession = () => {
     localStorage.removeItem("localSession");
     setUserSession();
   };
 
+  const getUserPurchaseHistory = async () => {
+    let purchaseHistory = [];
+    const q = query(
+      purchaseHistoryCollection,
+      where("idUser", "==", userSession.id)
+    );
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      const data = { id: doc.id, ...doc.data() };
+      purchaseHistory.push({ ...purchaseHistory, ...data });
+    });
+
+    return purchaseHistory;
+  };
+
   return (
-    <UserContext.Provider value={{ setSession, getSession, removeSession }}>
+    <UserContext.Provider
+      value={{
+        setSession,
+        removeSession,
+        userSession,
+        getUserPurchaseHistory,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

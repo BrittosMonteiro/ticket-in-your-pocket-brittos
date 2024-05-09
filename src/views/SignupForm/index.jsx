@@ -46,37 +46,37 @@ function SignupForm() {
 
   return (
     <div className="form-container">
-      <div className="form-wrapper">
-        {" "}
-        {/* Adicionando a classe form-wrapper */}
+      <div className="wrapper">
         <form onSubmit={handleSubmit}>
-          <h2>Sign Up</h2>
-          <div className="form-group">
-            <label htmlFor="nome">Nome:</label>
-            <input
-              className="input-field"
-              type="name"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
+          <h2 className="text-lg font-bold mb-4">Cadastre-se</h2>
+          <div className="flex flex-wrap gap-4">
+            <div className="form-group w-full md:w-1/2">
+              <label htmlFor="nome">Nome:</label>
+              <input
+                className="input input-bordered w-full"
+                type="text" 
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group w-full md:w-1/2">
+              <label htmlFor="lastname">Sobrenome:</label>
+              <input
+                className="input input-bordered w-full"
+                type="text" 
+                id="lastname"
+                value={lastname}
+                onChange={(e) => setLastName(e.target.value)}
+                required
+              />
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="Lastname">Sobrenome:</label>
-            <input
-              className="input-field"
-              type="Lastname"
-              id="LastName"
-              value={lastname}
-              onChange={(e) => setLastName(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
+          <div className="form-group w-full">
             <label htmlFor="email">Email:</label>
             <input
-              className="input-field"
+              className="input input-bordered w-full"
               type="email"
               id="email"
               value={email}
@@ -84,10 +84,10 @@ function SignupForm() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group w-full">
             <label htmlFor="password">Password:</label>
             <input
-              className="input-field"
+              className="input input-bordered w-full"
               type="password"
               id="password"
               value={password}
@@ -95,8 +95,8 @@ function SignupForm() {
               required
             />
           </div>
-          <button className="button" type="submit">
-            Login
+          <button className="btn btn-primary btn-signup w-full" type="submit">
+            Criar conta
           </button>
         </form>
       </div>

@@ -1,60 +1,65 @@
-/* SignupForm.css */
 
 .form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2.5rem 4%;
-    margin-top: 50px;
-  }
-  .form-wrapper {
-    background-color:#fafafa90; 
-    border: 2px solid #ccc; 
-    padding: 20px; 
-    border-radius: 10px; 
-    width: 400px; 
-    height: 600px; 
-    box-shadow: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem 4%;
+  background-color: var(--black);
+  width: 100%;
+  min-height: 100vh; 
+}
+
+.wrapper {
+  background-color: #d8d8d8;
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%; 
+  max-width: 500px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.form-group {
+  margin-top: 20px; 
+  margin-bottom: 20px;
+}
+
+.btn-signup {
+  display: block;
+  width: 100%;
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 12px 20px; 
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.btn-signup:hover {
+  background-color: rgb(255, 145, 0);;
+  color: white; 
+  transform: scale(1.05);
+}
+
+.input-wide {
+  width: calc(100% - 50px); 
+}
+
+
+@media (max-width: 600px) {
+  .wrapper {
+    padding: 10px; 
+    max-width: 90%; 
   }
   
-  h2{
-    padding-top: 10px;
-  }
   .form-group {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
+    margin-top: 10px; 
+    margin-bottom: 10px; 
   }
-  
-  label {
-    font-size: 0.9rem;
+
+  .btn-signup {
+    font-size: 12px; 
+    padding: 8px 12px; 
   }
-  
-  .input-field {
-    background-color: #0e0e0e;
-    color: #fff;
-    border-radius: 20px;
-    padding: 10px; /* Aumentando o espaçamento interno do input */
-    border: 1px solid #0e0e0e ;
-    transition: border-color 0.3s ease; /* Adicionando uma transição suave para a mudança de cor da borda */
-  }
-  
-  /* Alterar a cor da borda quando o campo é clicado */
-  input:focus {
-    border-color: #ff9100; /* Cor da borda quando o campo é clicado */
-  }
-  
-  .button {
-    background-color: #0e0e0e;
-    color: #fff;
-    height: 40px; /* Ajustando a altura do botão */
-    width: 150px; /* Ajustando a largura do botão */
-    border-radius: 20px;
-    border: none;
-    transition: transform 0.2s ease; /* Adicionando uma transição suave */
-  }
-  
-  .button:hover {
-    transform: scale(1.05); /* Aumentando o tamanho do botão em 5% */
-  }
+}

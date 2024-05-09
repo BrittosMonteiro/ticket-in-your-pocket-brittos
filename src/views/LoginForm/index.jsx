@@ -58,15 +58,14 @@ function LoginForm() {
   };
 
   return (
-    <div className="form-container">
-      <div className="form-wrapper">
-        {/* Adicionando a classe form-wrapper */}
+    <div className="form-container space-y-4">
+      <div className="form-wrapper bg-white p-4 rounded-lg shadow-md">
         <form onSubmit={handleSubmit}>
-          <h2>Login</h2>
+          <h2 className="text-lg font-bold mb-4">Login</h2>
           <div className="form-group">
             <label htmlFor="email">Email:</label>
             <input
-              className="input-field"
+              className="input input-bordered"
               type="email"
               id="email"
               value={email}
@@ -77,7 +76,7 @@ function LoginForm() {
           <div className="form-group">
             <label htmlFor="password">Password:</label>
             <input
-              className="input-field"
+              className="input input-bordered "
               type="password"
               id="password"
               value={password}
@@ -85,7 +84,7 @@ function LoginForm() {
               required
             />
           </div>
-          <button className="button" type="submit">
+          <button className="btn btn-primary btn-signin" type="submit">
             Login
           </button>
         </form>

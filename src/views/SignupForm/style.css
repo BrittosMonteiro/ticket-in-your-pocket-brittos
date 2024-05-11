@@ -9,7 +9,7 @@
   min-height: 100vh; 
 }
 
-.wrapper {
+.signup-wrapper {
   background-color: #d8d8d8;
   border: 2px solid #ccc;
   padding: 20px;
@@ -19,7 +19,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
-.form-group {
+.signup-form-group {
   margin-top: 20px; 
   margin-bottom: 20px;
 }
@@ -42,18 +42,32 @@
   transform: scale(1.05);
 }
 
+.input{
+  background-color: #f0f0f0;
+  color: #252323;
+}
+
 .input-wide {
   width: calc(100% - 50px); 
 }
 
+h2{
+  color: #252323; ;
+}
+
+label{
+  font-size: 0.9rem;
+  color: #252323; ;
+}
+
 
 @media (max-width: 600px) {
-  .wrapper {
+  .signup-wrapper {
     padding: 10px; 
     max-width: 90%; 
   }
   
-  .form-group {
+  .signup-form-group {
     margin-top: 10px; 
     margin-bottom: 10px; 
   }

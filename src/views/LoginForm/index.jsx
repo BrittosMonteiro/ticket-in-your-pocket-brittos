@@ -59,10 +59,10 @@ function LoginForm() {
 
   return (
     <div className="form-container space-y-4">
-      <div className="form-wrapper bg-white p-4 rounded-lg shadow-md">
+      <div className="login-wrapper bg-white p-4 rounded-lg shadow-md">
         <form onSubmit={handleSubmit}>
           <h2 className="text-lg font-bold mb-4">Login</h2>
-          <div className="form-group">
+          <div className="login-form-group">
             <label htmlFor="email">Email:</label>
             <input
               className="input input-bordered"
@@ -73,10 +73,10 @@ function LoginForm() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="login-form-group">
             <label htmlFor="password">Password:</label>
             <input
-              className="input input-bordered "
+              className="input input-bordered"
               type="password"
               id="password"
               value={password}

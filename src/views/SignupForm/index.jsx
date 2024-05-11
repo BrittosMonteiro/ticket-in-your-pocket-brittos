@@ -44,13 +44,12 @@ function SignupForm() {
     }
   };
 
-  return (
+ return (
     <div className="form-container">
-      <div className="wrapper">
+      <div className="signup-wrapper">
         <form onSubmit={handleSubmit}>
           <h2 className="text-lg font-bold mb-4">Cadastre-se</h2>
-          <div className="flex flex-wrap gap-4">
-            <div className="form-group w-full md:w-1/2">
+            <div className="signup-form-group w-full">
               <label htmlFor="nome">Nome:</label>
               <input
                 className="input input-bordered w-full"
@@ -61,7 +60,7 @@ function SignupForm() {
                 required
               />
             </div>
-            <div className="form-group w-full md:w-1/2">
+            <div className="signup-form-group w-full">
               <label htmlFor="lastname">Sobrenome:</label>
               <input
                 className="input input-bordered w-full"
@@ -72,8 +71,7 @@ function SignupForm() {
                 required
               />
             </div>
-          </div>
-          <div className="form-group w-full">
+          <div className="signup-form-group w-full">
             <label htmlFor="email">Email:</label>
             <input
               className="input input-bordered w-full"
@@ -84,7 +82,7 @@ function SignupForm() {
               required
             />
           </div>
-          <div className="form-group w-full">
+          <div className="signup-form-group w-full">
             <label htmlFor="password">Password:</label>
             <input
               className="input input-bordered w-full"

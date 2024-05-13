@@ -73,7 +73,9 @@ Considerações Finais
 
 Este projeto oferece uma plataforma intuitiva para a compra de ingressos para filmes, fornecendo uma experiência de usuário fluida e eficiente. A integração com o Firebase como backend oferece escalabilidade, segurança e confiabilidade para o sistema.
 
- 
+ GIF DO PROJETO
+ É preciso fazer o download do video para conseguir visualizar, o google drive não suporta visualização de gif
+ https://drive.google.com/file/d/1avoK9bsNJKvWGpA7mX48V39H85Da2t4Z/view?usp=sharing
  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
  

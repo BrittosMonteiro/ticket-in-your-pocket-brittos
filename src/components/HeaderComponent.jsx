@@ -13,11 +13,13 @@ export default function HeaderComponent() {
     <header className="w-full flex flex-row items-center justify-between border-b-2 py-4 px-8 sticky top-0 z-10 bg-base-100">
       <div className="flex flex-row gap-8">
         <LogoComponent />
-        {userSession && (
-          <span className="text-2xl text-white">
-            Olá, <span className="font-semibold">{userSession.name}!</span>
-          </span>
-        )}
+        <span className="text-2xl text-white hidden sm:flex">
+          {userSession && (
+            <>
+              Olá, <span className="font-semibold">{userSession.name}!</span>
+            </>
+          )}
+        </span>
       </div>
 
       <div className="flex flex-row items-center gap-4">
@@ -37,7 +39,7 @@ export default function HeaderComponent() {
           </div>
           <ul
             tabIndex={0}
-            className="p-2 shadow-lg menu dropdown-content z-[1] bg-base-900 rounded-box w-52"
+            className="p-2 shadow-lg menu dropdown-content z-[1] bg-black rounded-box w-52"
           >
             {!userSession ? (
               <>

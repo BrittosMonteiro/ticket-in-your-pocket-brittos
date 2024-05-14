@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
-import CartListItemComponent from "./CartListItem";
 import { useNavigate } from "react-router-dom";
+import CartListItemComponent from "./CartListItem";
+import { CartContext } from "../context/CartContext";
 
 export default function CartListComponent() {
   const { cart, getCartQty, purchase } = useContext(CartContext);

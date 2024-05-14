@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import "./style.css";
 import { Ticket, Minus } from "phosphor-react";
 import { CartContext } from "../../context/CartContext";
-import ModalItemDetailComponent from "../ModalItem";
+import ModalItemDetailComponent from "../ModalMovieDetail";
 
 // eslint-disable-next-line react/prop-types
 export default function CardComponent({ movie }) {
@@ -21,14 +21,6 @@ export default function CardComponent({ movie }) {
     quantity > 0 ? decreaseQtyById(movie.id) : removeFromCart(movie.id);
   };
 
-  const changeQty = (newQty) => {
-    if (newQty < 0 || !newQty) {
-      setQty(0);
-    } else {
-      setQty(newQty);
-    }
-  };
-
   const isMovieInCart = () => {
     const movieData = findItemInCart(movie.id);
     if (movieData) {
@@ -44,7 +36,7 @@ export default function CardComponent({ movie }) {
     <div className="card">
       <img
         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-        className="card-img"
+        className="w-full max-h-72 object-cover"
         onClick={() => document.getElementById(movie.id).showModal()}
       />
       <div className="card-description">
@@ -60,7 +52,7 @@ export default function CardComponent({ movie }) {
         >
           Adicionar
         </button>
-        <div className="card-row">
+        <div className="card-row gap-4">
           <button
             className="btn-default btn-remove-from-cart"
             onClick={() => removeTicket()}
@@ -68,13 +60,7 @@ export default function CardComponent({ movie }) {
           >
             <Minus color="#f4f8fc" />
           </button>
-          <input
-            type="text"
-            className="input-qty-ticket"
-            value={qty}
-            disabled={qty == 0}
-            onChange={(e) => changeQty(e.target.value)}
-          />
+          <span>{qty}</span>
           <Ticket size={18} color="#f4f8fc" />
         </div>
       </div>

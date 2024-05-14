@@ -1,10 +1,14 @@
-import ModalItemDetailComponent from "../ModalItem";
+import ModalItemDetailComponent from "./ModalMovieDetail";
 
-export default function CartListItemComponent({ item }) {
+export default function CartListItemComponent({ item, hideSubAndDetail }) {
   return (
     <>
       <tr>
-        <td onClick={() => document.getElementById(item.id).showModal()}>
+        <td
+          onClick={() =>
+            !hideSubAndDetail && document.getElementById(item.id).showModal()
+          }
+        >
           <div className="flex items-center gap-3">
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
@@ -21,10 +25,12 @@ export default function CartListItemComponent({ item }) {
         </td>
         <td></td>
         <td>{item.quantity}</td>
-        <td>R$ {(item.quantity * 27.45).toFixed(2).replace(".", ",")}</td>
+        {!hideSubAndDetail && (
+          <td>R$ {(item.quantity * 27.45).toFixed(2).replace(".", ",")}</td>
+        )}
       </tr>
 
-      <ModalItemDetailComponent item={item} />
+      {!hideSubAndDetail && <ModalItemDetailComponent item={item} />}
     </>
   );
 }

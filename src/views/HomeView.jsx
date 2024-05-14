@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import ContainerComponent from "../../components/Container";
-import ItemListContainerComponent from "../../components/ItemListContainer";
+import ContainerComponent from "../components/ContainerComponent";
+import HighlightedMovie from "../components/HighlightedMovieComponent";
+import ItemListContainerComponent from "../components/ItemListContainerComponent";
 
 export default function HomeView() {
   const [movies, setMovies] = useState([]);
@@ -31,8 +32,13 @@ export default function HomeView() {
   }, []);
 
   return (
-    <ContainerComponent title={"Em cartaz"}>
-      {movies.length > 0 && <ItemListContainerComponent list={movies} />}
+    <ContainerComponent title={"EM CARTAZ"}>
+      {movies && movies.length > 0 && (
+        <>
+          <HighlightedMovie movie={movies[0]} />
+          <ItemListContainerComponent list={movies.slice(1, 13)} />
+        </>
+      )}
     </ContainerComponent>
   );
 }

@@ -1,6 +1,6 @@
 import "./App.css";
-import HeaderComponent from "./components/Header";
 import { Outlet } from "react-router-dom";
+import HeaderComponent from "./components/HeaderComponent";
 
 function App() {
   return (

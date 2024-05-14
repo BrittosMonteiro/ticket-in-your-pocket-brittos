@@ -1,11 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import HomeView from "../views/Home";
-import ProductDetails from "../views/ProductDetails";
-import CartView from "../views/Cart";
+import HomeView from "../views/HomeView";
+import CartView from "../views/CartView";
 import LoginForm from "../views/LoginForm";
 import SignupForm from "../views/SignupForm";
-import PurchaseHistoryView from "../views/PurchaseHistory";
+import OrderHistoryView from "../views/OrderHistory";
 
 export const routes = createBrowserRouter([
   {
@@ -15,10 +14,6 @@ export const routes = createBrowserRouter([
       {
         path: "",
         element: <HomeView />,
-      },
-      {
-        path: "movie/:id",
-        element: <ProductDetails />,
       },
       {
         path: "cart",
@@ -34,7 +29,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: "history",
-        element: <PurchaseHistoryView />,
+        element: <OrderHistoryView />,
       },
     ],
   },

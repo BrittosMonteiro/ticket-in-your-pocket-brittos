@@ -118,6 +118,7 @@ export const CartProvider = ({ children }) => {
           id: item.id,
           poster_path: item.poster_path,
           title: item.title,
+          quantity: item.quantity
         };
 
         purchaseData.items.push(data);
@@ -132,24 +133,6 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const getPurchaseHistory = async () => {
-    const db = getFirestore();
-
-    const getHistory = query(
-      collection(db, "purchaseHistory"),
-      where("idUser", "==", "Eubfw09SFMqzH8cXAPbW")
-    );
-
-    const docs = await getDocs(getHistory);
-
-    console.log(docs.size);
-    docs.forEach((doc) => {
-      if (doc.exists()) {
-        console.log(doc);
-      }
-    });
-  };
-
   return (
     <CartContext.Provider
       value={{
@@ -161,7 +144,6 @@ export const CartProvider = ({ children }) => {
         getCartQty,
         findItemInCart,
         purchase,
-        getPurchaseHistory,
         cart,
       }}
     >

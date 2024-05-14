@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import ContainerComponent from "../../components/Container";
-import { CartContext } from "../../context/CartContext";
-import CartListComponent from "../../components/CartList";
+import { CartContext } from "../context/CartContext";
+import ContainerComponent from "../components/ContainerComponent";
+import CartListComponent from "../components/CartList";
 
 export default function CartView() {
   const { getCartQty } = useContext(CartContext);

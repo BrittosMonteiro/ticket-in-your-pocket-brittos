@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import "./style.css";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
-import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../../context/UserContext";
 
 function SignupForm() {
   const { userSession, setSession } = useContext(UserContext);

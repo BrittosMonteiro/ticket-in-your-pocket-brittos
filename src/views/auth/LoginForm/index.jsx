@@ -7,8 +7,8 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { UserContext } from "../../context/UserContext";
 import { useLocation, useNavigate } from "react-router-dom";
+import { UserContext } from "../../../context/UserContext";
 
 function LoginForm() {
   const { userSession, setSession } = useContext(UserContext);

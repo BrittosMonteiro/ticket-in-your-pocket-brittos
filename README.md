@@ -9,43 +9,43 @@ Este documento descreve o projeto de um E-Commerce voltado para a compra de ingr
 
 ### Frontend:
 
-```
+
 •	React: A biblioteca JavaScript é usada para criar interfaces de usuário interativas e dinâmicas.
 
 •	Vite: O construtor de aplicações web oferece uma experiência de desenvolvimento rápida e eficiente.
-```
+
 
 ### Backend:
 
-```
+
 •	Firebase: Firebase: A plataforma de desenvolvimento de aplicativos móveis e da web é utilizada para gerenciar a autenticação de usuários, armazenar dados do usuário, como histórico de compras e informações do carrinho, e fornece uma API para interagir com o banco de dados.
-```
+
 
 ### Recursos e Funcionalidades
 
 #### 1. Listagem de Filmes
-```
+
 •	O sistema consome uma API para listar os filmes disponíveis para compra.
 
 •	Os filmes são apresentados ao usuário com informações relevantes, como título, sinopse, horários de exibição e preços dos ingressos.
-```
+
 
 #### 2. Autenticação de Usuários
-```
+
 •	O sistema oferece formulários de login e cadastro para os usuários.
 
 •	Os usuários podem criar uma conta fornecendo informações básicas e autenticar-se para acessar recursos adicionais, como histórico de compra e gerenciamento do carrinho.
-```
+
 
 #### 3. Histórico de Compras
-```
+
 •	O sistema mantém um histórico de compras para cada usuário autenticado.
 
 •	Os usuários podem revisar suas compras anteriores, incluindo detalhes como os filmes comprados, a data da compra e o valor total.
-```
+
 
 #### 4. Gerenciamento do Carrinho
-```
+
 •	Os usuários têm a capacidade de adicionar, alterar e remover itens do carrinho de compras.
 
 •	O carrinho de compras mantém uma lista atualizada dos itens selecionados, juntamente com o total atualizado.
@@ -53,7 +53,7 @@ Este documento descreve o projeto de um E-Commerce voltado para a compra de ingr
 Arquitetura do Sistema
 
 O sistema segue uma arquitetura cliente-servidor, com o cliente implementado em React e Vite, e o servidor utilizando o Firebase como back-end.
-```
+
 
 ## Fluxo de Funcionamento
 

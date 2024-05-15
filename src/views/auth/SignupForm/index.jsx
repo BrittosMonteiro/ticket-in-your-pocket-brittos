@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../context/UserContext";
 
 function SignupForm() {
+  document.title = "Criar conta";
   const { userSession, setSession } = useContext(UserContext);
   const navigate = useNavigate();
   const [name, setName] = useState("");

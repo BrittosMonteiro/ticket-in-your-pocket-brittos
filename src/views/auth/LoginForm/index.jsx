@@ -11,6 +11,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../../../context/UserContext";
 
 function LoginForm() {
+  document.title = "Login";
   const { userSession, setSession } = useContext(UserContext);
   const navigate = useNavigate();
   const { search } = useLocation();

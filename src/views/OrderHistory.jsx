@@ -7,6 +7,7 @@ import ModalOrderDetailsComponent from "../components/ModalOrderDetails";
 export default function OrderHistoryView() {
   const { userSession, getUserPurchaseHistory } = useContext(UserContext);
   const navigate = useNavigate();
+  document.title = 'Meus pedidos'
 
   const [purchaseHistory, setPurchaseHistory] = useState([]);
 

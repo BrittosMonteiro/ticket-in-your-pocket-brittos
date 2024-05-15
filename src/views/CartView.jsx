@@ -5,6 +5,8 @@ import CartListComponent from "../components/CartList";
 
 export default function CartView() {
   const { getCartQty } = useContext(CartContext);
+  document.title = 'Carrinho'
+
   return (
     <ContainerComponent title={"Carrinho"}>
       {getCartQty().quantity > 0 && <CartListComponent />}

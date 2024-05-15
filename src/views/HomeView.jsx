@@ -5,6 +5,7 @@ import ItemListContainerComponent from "../components/ItemListContainerComponent
 import ViewTitleComponent from "../components/ViewTitleComponent";
 
 export default function HomeView() {
+  document.title = 'Home'
   const [movies, setMovies] = useState([]);
   const options = {
     method: "GET",

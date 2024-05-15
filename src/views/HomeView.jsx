@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ContainerComponent from "../components/ContainerComponent";
 import HighlightedMovie from "../components/HighlightedMovieComponent";
 import ItemListContainerComponent from "../components/ItemListContainerComponent";
+import ViewTitleComponent from "../components/ViewTitleComponent";
 
 export default function HomeView() {
   const [movies, setMovies] = useState([]);
@@ -32,10 +33,12 @@ export default function HomeView() {
   }, []);
 
   return (
-    <ContainerComponent title={"EM CARTAZ"}>
+    <ContainerComponent title={"DESTAQUE"}>
       {movies && movies.length > 0 && (
         <>
           <HighlightedMovie movie={movies[0]} />
+          <div className="divider"></div>
+          <ViewTitleComponent title="EM CARTAZ" />
           <ItemListContainerComponent list={movies.slice(1, 13)} />
         </>
       )}
